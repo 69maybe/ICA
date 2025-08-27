@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ICA Access Portal</title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="signup-body">
+    <div class="signup-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="ICA Logo">
+            <div class="logo-text">
+                <h2><span class="red">I</span>NTERNATIONAL</h2>
+
+                <div class="text-line">
+                    <h2><span class="red">C</span>ONTRACT</h2>
+                    <div class="red-bar"></div>
+                </div>
+
+                <div class="text-line">
+                    <h2><span class="red">A</span>GENCY</h2>
+                    <div class="red-bar"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <h1 style="letter-spacing: 0.4rem; font-weight: bolder;">LOGIN</h1>
+        <form class="login-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirm" placeholder="Confirm Password" required>
+            <button type="button" id="login-btn">Login</button>
+        </form>
+        <a href="#" onclick="history.back(); return false;" style="letter-spacing: 0.06rem;" class="back-link">←
+            Back</a>
+        <footer>powered by IO Interactive</footer>
+    </div>
+    <script>
+        function autoType(id, text, delay = 100) {
+            const input = document.getElementById(id);
+            let i = 0;
+            input.value = '';
+            const interval = setInterval(() => {
+                input.value += text[i];
+                i++;
+                if (i >= text.length) clearInterval(interval);
+            }, delay);
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => autoType('name', '_maybe'), 1000);
+            setTimeout(() => autoType('password', 'pointbreak'), 2000);
+            setTimeout(() => autoType('confirm', 'pointbreak'), 3200);
+        });
+
+        document.getElementById('login-btn').addEventListener('click', () => {
+            window.location.href = 'stalk.html';
+        });
+    </script>
+
+</body>
+
+</html>

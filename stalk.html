@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ICA DATABASE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+
+  <style>
+    @font-face {
+      font-family: 'Agency';
+      src: url('../fonts/AGENCYB.TTF') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Eurostile';
+      src: url('../fonts/SFUEurostileRegular.TTF') format('truetype');
+    }
+
+    body {
+      font-family: 'Eurostile', 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      background-image: url('../images/background.png');
+      background-size: cover;
+      background-position: center;
+      color: #e2e8f0;
+    }
+
+    .glass {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    h2 {
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    }
+
+    table.dataTable.display thead th {
+      font-size: 1.1rem;
+      color: #f43f5e;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    table.dataTable.display tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .glass {
+      animation: slideDown 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    table.dataTable tbody td {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.06rem;
+      padding: 0.75rem 1rem;
+      transition: background-color 0.2s ease;
+    }
+
+    button:active {
+      transform: scale(0.95);
+      filter: brightness(1.2);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    center {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="p-6">
+  <div class="max-w-5xl mx-auto glass rounded-lg shadow-xl p-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+      <h2 class="title text-3xl font-bold text-red-600 tracking-wide">
+        S.T.A.L.K v2.0
+        <span class="block text-sm text-gray-400 italic">bởi maybe, cùng con Copilot của anh ấy</span>
+      </h2>
+
+      <div class="flex flex-wrap gap-3 items-center">
+        <label for="lopFilter" class="text-sm text-gray-300">Lọc theo lớp:</label>
+        <select id="lopFilter"
+          class="border border-gray-600 rounded px-3 py-1 text-sm bg-black/50 text-gray-200 hover:bg-black/70 transition">
+          <option value="">Tất cả</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table id="studentsTable" class="display w-full text-sm">
+        <thead>
+          <tr>
+            <th>MSSV</th>
+            <th>Tên SV</th>
+            <th>Lớp</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      fetch('json/sinhvien.json')
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = $('#studentsTable tbody');
+          data.forEach((sv, index) => {
+            tableBody.append(`
+              <tr style="animation-delay: ${index * 0.05}s;">
+                <td>${sv.mssv}</td>
+                <td>${sv.ten}</td>
+                <td>${sv.lop}</td>
+                <td>
+                  <button onclick="copyAndOpen('${sv.mssv}')" class="text-red-400 hover:underline text-sm font-medium">
+                    🔍 Soi
+                  </button>
+                </td>
+              </tr>
+            `);
+          });
+
+          const table = $('#studentsTable').DataTable();
+
+          const lopSet = new Set(data.map(sv => sv.lop));
+          lopSet.forEach(lop => {
+            $('#lopFilter').append(`<option value="${lop}">${lop}</option>`);
+          });
+
+          $('#lopFilter').on('change', function () {
+            const val = $.fn.dataTable.util.escapeRegex($(this).val());
+            table.column(2).search(val, true, false).draw();
+          });
+        });
+    });
+
+    function copyAndOpen(mssv) {
+      navigator.clipboard.writeText(mssv);
+      window.open(`stalk.html?mssv=${mssv}`, '_blank');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+@font-face {
+    font-family: 'Eurostile';
+    src: url('../fonts/eurostile.TTF') format('truetype');
+}
+
+body {
+    font-family: 'Eurostile', sans-serif;
+    background-image: url('../images/background.png');
+
+}
+
+.logo-text h2,
+.signup-container h1,
+.login-form input,
+.login-form button,
+footer {
+    font-family: 'Eurostile', sans-serif;
+}
+
+body.signup-body {
+    background-color: #0d0d0d;
+    font-family: 'Agency FB', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    background-image: url('../images/form_background.png');
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px crimson;
+    text-align: center;
+    width: 400px;
+}
+
+.logo img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.logo h2 {
+    font-size: 14px;
+    color: crimson;
+    margin-bottom: 20px;
+}
+
+.signup-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: crimson;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.signup-container button:hover {
+    background-color: darkred;
+}
+
+.back-link {
+    display: block;
+    margin-top: 15px;
+    color: gray;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 0.05rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.signup-container {
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+.signup-container input,
+.signup-container button,
+.signup-container h1,
+.logo,
+footer {
+    opacity: 0;
+    animation: slideIn 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.signup-container input:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.signup-container input:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.signup-container input:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.signup-container input:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.signup-container button {
+    animation-delay: 0.8s;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+.logo-text h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0.4rem;
+    display: flex;
+    justify-content: start;
+}
+
+.logo-text .red {
+    color: crimson;
+    font-weight: bold;
+}
+
+.login-form input {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlide 0.5s ease-out forwards;
+    letter-spacing: 0.15rem;
+    width: 350px;
+}
+
+.login-form button {
+    width: 100px;
+    letter-spacing: 0.1rem;
+    margin-top: 0.3rem;
+}
+
+.login-form input:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.login-form input:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.login-form input:nth-child(3) {
+    animation-delay: 2.5s;
+}
+
+.login-form input:nth-child(4) {
+    animation-delay: 3.5s;
+}
+
+@keyframes fadeSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.text-line {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.text-line h2 {
+    margin: 0;
+    white-space: nowrap;
+    font-size: 1.8rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.red-bar {
+    height: 1.7rem;
+    background-color: #c00;
+    flex-grow: 1;
+    border-radius: 1px;
+    z-index: 1;
+    opacity: 85%;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: wipeReveal 1s ease-out 1.5s forwards;
+}
+
+@keyframes wipeReveal {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
