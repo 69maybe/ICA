@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8" />
   <title>ICA DATABASE</title>
@@ -31,8 +30,7 @@
     }
 
     .glass {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
+      background-image: url('../images/background.png');
       border: 1px solid rgba(255, 255, 255, 0.1);
       animation: fadeInUp 0.8s ease-out forwards;
       opacity: 0;
@@ -60,7 +58,6 @@
         opacity: 0;
         transform: translateY(-30px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -90,7 +87,6 @@
         opacity: 0;
         transform: translateY(20px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -103,9 +99,9 @@
   </style>
 </head>
 
-<body class="p-6">
-  <div class="max-w-5xl mx-auto glass rounded-lg shadow-xl p-6">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+<body class="p-4 md:p-8 lg:p-12">
+  <div class="max-w-screen-md mx-auto glass rounded-lg shadow-xl p-6">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-6">
       <h2 class="title text-3xl font-bold text-red-600 tracking-wide">
         S.T.A.L.K v2.0
         <span class="block text-sm text-gray-400 italic">bởi maybe, cùng con Copilot của anh ấy</span>
@@ -114,14 +110,14 @@
       <div class="flex flex-wrap gap-3 items-center">
         <label for="lopFilter" class="text-sm text-gray-300">Lọc theo lớp:</label>
         <select id="lopFilter"
-          class="border border-gray-600 rounded px-3 py-1 text-sm bg-black/50 text-gray-200 hover:bg-black/70 transition">
+          class="border border-gray-600 rounded px-3 py-2 text-sm bg-black/50 text-gray-200 hover:bg-black/70 transition">
           <option value="">Tất cả</option>
         </select>
       </div>
     </div>
 
     <div class="overflow-x-auto">
-      <table id="studentsTable" class="display w-full text-sm">
+      <table id="studentsTable" class="display w-full min-w-[600px] text-sm">
         <thead>
           <tr>
             <th>MSSV</th>
@@ -151,7 +147,7 @@
                 <td>${sv.ten}</td>
                 <td>${sv.lop}</td>
                 <td>
-                  <button onclick="copyAndOpen('${sv.mssv}')" class="text-red-400 hover:underline text-sm font-medium">
+                  <button onclick="copyAndOpen('${sv.mssv}')" class="px-3 py-2 text-red-400 hover:underline text-sm font-medium active:scale-95 focus:outline-none">
                     🔍 Soi
                   </button>
                 </td>
@@ -175,9 +171,8 @@
 
     function copyAndOpen(mssv) {
       navigator.clipboard.writeText(mssv);
-      window.open(`stalk.html?mssv=${mssv}`, '_blank');
+      window.open(`http://daotao2.stu.edu.vn/xlhv_hk242/`, '_blank');
     }
   </script>
 </body>
-
 </html>

@@ -242,3 +242,100 @@ footer {
         opacity: 1;
     }
 }
+/* Hiệu ứng logo */
+@keyframes logoDropZoom {
+    from {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1.25);
+        opacity: 1;
+    }
+}
+
+.logo.animate {
+    animation: logoDropZoom 1s ease-out forwards;
+}
+
+/* Welcome text */
+.welcome-text {
+    margin-top: 15px;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.welcome-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.welcome-text .red {
+    color: crimson;
+}
+
+
+/*                  Responsive                  */
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+    .signup-container {
+        width: 95%;
+        max-width: 500px;
+        padding: 30px 25px;
+    }
+
+    .signup-container h1 {
+        font-size: 24px;
+    }
+
+    .logo-text h2 {
+        font-size: 20px;
+    }
+}
+
+/* Mobile nhỏ (≤ 480px) */
+@media (max-width: 480px) {
+    body.signup-body {
+        padding: 10px;
+    }
+
+    .signup-container {
+        width: 70%;
+        max-width: 100%;
+        padding: 30px 20px;
+        margin: auto;
+    }
+
+    .signup-container h1 {
+        font-size: 22px;
+        letter-spacing: 0.2rem;
+    }
+
+    .logo-text h2 {
+        font-size: 1.4rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .text-line h2 {
+        font-size: 1.4rem;
+    }
+
+    .red-bar {
+        height: 1.25rem;
+        margin-left: 2.5px;
+    }
+
+    .login-form input,
+    .login-form button {
+        width: 65%;
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .login-form button {
+        width: 30%;
+    }
+}
