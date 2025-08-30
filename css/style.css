@@ -163,6 +163,7 @@ footer {
 
 .login-form input {
     opacity: 0;
+    font-size: 15.5px;
     transform: translateY(20px);
     animation: fadeSlide 0.5s ease-out forwards;
     letter-spacing: 0.15rem;
@@ -170,6 +171,7 @@ footer {
 }
 
 .login-form button {
+    font-size: 16px;
     width: 100px;
     letter-spacing: 0.1rem;
     margin-top: 0.3rem;
@@ -242,12 +244,14 @@ footer {
         opacity: 1;
     }
 }
+
 /* Hiệu ứng logo */
 @keyframes logoDropZoom {
     from {
         transform: translateY(-100px) scale(1);
         opacity: 0;
     }
+
     to {
         transform: translateY(0) scale(1.25);
         opacity: 1;
@@ -273,6 +277,7 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
 .welcome-text .red {
     color: crimson;
 }
@@ -333,6 +338,7 @@ footer {
         width: 65%;
         font-size: 15px;
         padding: 12px;
+
     }
 
     .login-form button {

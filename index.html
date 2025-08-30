@@ -7,41 +7,49 @@
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <style>
+        #stalkFrame {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
 </head>
 
 <body class="signup-body">
-    <div class="signup-container">
+    <!-- Khung login -->
+    <div class="signup-container" id="login-container">
         <div class="logo">
             <img src="images/logo.png" alt="ICA Logo">
             <div class="logo-text">
                 <h2><span class="red">I</span>NTERNATIONAL</h2>
-
                 <div class="text-line">
                     <h2><span class="red">C</span>ONTRACT</h2>
                     <div class="red-bar"></div>
                 </div>
-
                 <div class="text-line">
                     <h2><span class="red">A</span>GENCY</h2>
                     <div class="red-bar"></div>
                 </div>
             </div>
-
-
-
         </div>
+
         <h1 style="letter-spacing: 0.4rem; font-weight: bolder;">LOGIN</h1>
         <form class="login-form">
             <input type="text" id="name" placeholder="Name" required>
             <input type="password" id="password" placeholder="Password" required>
-            <input type="password" id="confirm" placeholder="Confirm Password" required>
+            <input type="text" id="query" placeholder="Query" required">
             <button type="button" id="login-btn">Login</button>
         </form>
-        <a href="#" onclick="history.back(); return false;" style="letter-spacing: 0.06rem;" class="back-link">←
+        <a href="#" onclick="history.back(); return false;" style="letter-spacing: 0.06rem; font-size: 1.1rem; opacity: 65%;" class="back-link">←
             Back</a>
         <footer>powered by IO Interactive</footer>
     </div>
+
+    <!-- Iframe chứa stalk -->
+    <iframe id="stalkFrame" src="stalk.html"></iframe>
+
     <script>
         function autoType(id, text, delay = 100) {
             const input = document.getElementById(id);
@@ -55,16 +63,18 @@
         }
 
         window.addEventListener('load', () => {
-            setTimeout(() => autoType('name', '_maybe'), 1000);
-            setTimeout(() => autoType('password', 'pointbreak'), 2000);
-            setTimeout(() => autoType('confirm', 'pointbreak'), 3200);
+            setTimeout(() => autoType('name', '_maybe', 80), 750);
+            setTimeout(() => autoType('password', 'pointbreak', 55), 1400);
+            setTimeout(() => autoType('query', 'Select * from STU_Database.', 50), 2650);
         });
 
         document.getElementById('login-btn').addEventListener('click', () => {
-            window.location.href = 'stalk.html';
+            // Ẩn login container
+            document.getElementById('login-container').style.display = 'none';
+            // Hiện iframe
+            document.getElementById('stalkFrame').style.display = 'block';
         });
     </script>
-
 </body>
 
 </html>
