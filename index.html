@@ -42,7 +42,8 @@
             <input type="text" id="query" placeholder="Query" required">
             <button type="button" id="login-btn">Login</button>
         </form>
-        <a href="#" onclick="history.back(); return false;" style="letter-spacing: 0.06rem; font-size: 1.1rem; opacity: 65%;" class="back-link">←
+        <a href="#" onclick="history.back(); return false;"
+            style="letter-spacing: 0.06rem; font-size: 1.1rem; opacity: 65%;" class="back-link">←
             Back</a>
         <footer>powered by IO Interactive</footer>
     </div>
@@ -64,17 +65,23 @@
 
         window.addEventListener('load', () => {
             setTimeout(() => autoType('name', '_maybe', 80), 750);
-            setTimeout(() => autoType('password', 'pointbreak', 55), 1400);
-            setTimeout(() => autoType('query', 'Select * from STU_Database.', 50), 2650);
+            setTimeout(() => autoType('password', 'pointbreak', 55), 1550);
+            setTimeout(() => autoType('query', 'select * from STU_Database.', 50), 2650);
         });
 
         document.getElementById('login-btn').addEventListener('click', () => {
-            // Ẩn login container
             document.getElementById('login-container').style.display = 'none';
-            // Hiện iframe
             document.getElementById('stalkFrame').style.display = 'block';
+
+            const audio = document.getElementById('welcome-audio');
+            audio.play().catch(error => {
+                console.warn("Không thể phát âm thanh:", error);
+            });
         });
     </script>
+    <!-- Thêm ở cuối body, trước </body> -->
+    <audio id="welcome-audio" src="audio/welcome-back.wav" preload="auto"></audio>
+
 </body>
 
 </html>
