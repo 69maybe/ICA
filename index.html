@@ -73,14 +73,14 @@
             document.getElementById('login-container').style.display = 'none';
             document.getElementById('stalkFrame').style.display = 'block';
 
-            const audio = document.getElementById('welcome-audio');
+            const audio = document.getElementById('beep');
             audio.play().catch(error => {
                 console.warn("Không thể phát âm thanh:", error);
             });
         });
     </script>
     <!-- Thêm ở cuối body, trước </body> -->
-    <audio id="welcome-audio" src="audio/welcome-back.wav" preload="auto"></audio>
+    <audio id="beep" src="audio/beep.wav" preload="auto"></audio>
 
 </body>
 
