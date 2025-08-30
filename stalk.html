@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
   <title>ICA DATABASE</title>
@@ -58,6 +59,7 @@
         opacity: 0;
         transform: translateY(-30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -87,6 +89,7 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -95,6 +98,12 @@
 
     center {
       display: none;
+    }
+
+    @media (max-width: 480px) {
+      table.dataTable tbody td {
+        font-weight: normal;
+      }
     }
   </style>
 </head>
@@ -171,8 +180,9 @@
 
     function copyAndOpen(mssv) {
       navigator.clipboard.writeText(mssv);
-      window.open(`http://daotao2.stu.edu.vn/xlhv_hk242/`, '_blank');
+      window.open(`http://daotao2.stu.edu.vn/xlhv_hk242/?mssv=${mssv}`, '_blank');
     }
   </script>
 </body>
+
 </html>
